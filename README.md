@@ -1,2 +1,2 @@
 # Data-Structures
-Algorithms made by me for my classes
+Algorithms made by me for Data Structures Class
