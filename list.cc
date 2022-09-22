@@ -1,3 +1,4 @@
+// "Copyright [2022[ <PABLO LOPES TEIXEIRA>"
 #ifndef STRUCTURES_ARRAY_LIST_H
 #define STRUCTURES_ARRAY_LIST_H
 
@@ -133,7 +134,7 @@ T structures::ArrayList<T>::pop(std::size_t index) {
     }
     size_--;
     T temp = contents[index];
-    for (int i = index; i < static_cast<int>(size_); i++) {
+    for (int i = index; i < static_cast<int>(size_) - 1; i++) {
         contents[i] = contents[i+1];
     }
     return temp;
@@ -154,10 +155,10 @@ T structures::ArrayList<T>::pop_front() {
         throw std::out_of_range("Array is empty!");
     }
     T temp = contents[0];
+    size_--;
     for (int i = 0; i < static_cast<int>(size_); i++) {
         contents[i] = contents[i+1];
     }
-    size_--;
     return temp;
 }
 
@@ -181,12 +182,12 @@ bool structures::ArrayList<T>::full() const {
 
 template<typename T>
 bool structures::ArrayList<T>::empty() const {
-    return static_cast<int>(size_) == 0;
+    return size_ == 0;
 }
 
 template<typename T>
 bool structures::ArrayList<T>::contains(const T& data) const {
-    for (int i = 0; i < static_cast<int>(size_); i++) {
+    for (int i = 0; i < static_cast<int>(size_) - 1; i++) {
         if (contents[i] == data) {
             return true;
         }
@@ -201,7 +202,7 @@ std::size_t structures::ArrayList<T>::find(const T& data) const {
             return static_cast<std::size_t>(i);
         }
     }
-    return static_cast<std::size_t>(10);
+    return size_;
 }
 
 template<typename T>
@@ -239,3 +240,4 @@ template<typename T>
 const T& structures::ArrayList<T>::operator[](std::size_t index) const {
     return contents[index];
 }
+
